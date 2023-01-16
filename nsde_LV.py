@@ -189,7 +189,7 @@ def train_nsde(model, z_test, config):
             torch.save(error_hedge, "error_hedge.pth.tar")
         
         # Evaluation Error of calibration to vanilla option prices
-        MSE = loss_fn(pred, target_mat_T)
+        MSE = loss_fn(pred, target_mat_T) # Erica: Need to change this line here to our own loss function
         loss_val=torch.sqrt(MSE)
         print('epoch={}, loss={:.4f}'.format(epoch, loss_val.item()))
         with open("log_train.txt","a") as f:
